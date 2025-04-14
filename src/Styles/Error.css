@@ -1,0 +1,9 @@
+.Error { 
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap : 5%;
+    padding-top: 100px;
+    box-sizing:border-box;
+}

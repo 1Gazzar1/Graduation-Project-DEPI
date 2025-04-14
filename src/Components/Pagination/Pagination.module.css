@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.arrow {
+    font-size: 75px;
+    border : none;
+    background: none;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.18, 0.99, 0.39, 0.89);
+}
+.arrow:hover{
+    scale: 1.1;
+}
+.h3 {
+    font-size: 75px
+}

@@ -1,0 +1,48 @@
+:root {
+
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+}
+.spinner { 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50%;
+    width: 5%;
+    aspect-ratio: 1/1;
+    background-color: transparent;
+    border: 5px solid  rgb(150, 0, 0);
+    box-shadow: 0 0 15px 2px rgb(150, 0, 0);
+    border-radius: 10px;
+    animation: spin 2s infinite ease-in-out;
+  }
+  @keyframes spin {
+    0%{
+      border-color: rgb(150, 0, 0);
+      transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) ;
+      box-shadow: 0 0 15px 2px rgb(150, 0, 0);
+      
+    }
+    33% { 
+      border-color: rgb(0, 0, 186);
+      transform: rotateX(180deg) rotateY(0deg) rotateZ(0deg) ;
+      box-shadow: 0 0 15px 2px rgb(0, 0, 186);
+    }
+    66% { 
+      border-color: rgb(0, 195, 0);
+      transform: rotateX(180deg) rotateY(180deg) rotateZ(0deg) ;
+      box-shadow: 0 0 15px 2px rgb(0, 195, 0);
+    }
+    100% { 
+      border-color: rgb(150, 0, 0);
+      transform: rotateX(180deg) rotateY(180deg) rotateZ(-180deg) ;
+      box-shadow: 0 0 15px 2px rgb(150, 0, 0);
+        /* transform: rotateX(180deg); */
+    }
+}
+.text { 
+  position: absolute;
+  top: 66%  ;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}

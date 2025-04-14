@@ -1,0 +1,91 @@
+/* Container Layout */
+.movieContainer {
+    margin-top: 45px; /* 30 * 1.5 */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px; /* 40 * 1.5 */
+    border-radius: 30px; /* 20 * 1.5 */
+}
+
+/* Poster Image */
+.movieImg img { 
+    border-radius: 30px; /* 20 * 1.5 */
+    width: 450px; /* 300 * 1.5 */
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.4);
+}
+
+/* Text Block */
+.movieDetails {
+    max-width: 900px; /* 600 * 1.5 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 45px; /* 30 * 1.5 */
+}
+
+/* Typography */
+.movieDetails h1 {
+    font-size: 75px; /* 50 * 1.5 */
+    margin-bottom: 15px;
+}
+.movieDetails h2 {
+    font-size: 52.5px; /* 35 * 1.5 */
+    margin-bottom: 15px;
+}
+.movieDetails h3 {
+    font-size: 36px; /* 24 * 1.5 */
+    margin-bottom: 15px;
+}
+.movieDetails p,
+.movieDetails li {
+    font-size: 24px; /* 16 * 1.5 */
+    line-height: 1.5; /* 1.6 * 1.5 */
+}
+
+/* Lists */
+.movieDetails ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px; /* 20 * 1.5 */
+    padding-left: 0;
+}
+.movieDetails li {
+    list-style: none;
+    position: relative;
+    padding-left: 36px; /* 24 * 1.5 */
+}
+.movieDetails li::before {
+    content: "📌";
+    position: absolute;
+    left: 0;
+}
+
+/* Utility classes */
+.mb-20 {
+    margin-bottom: 30px; /* 20 * 1.5 */
+}
+.ml-20 {
+    margin-left: 30px; /* 20 * 1.5 */
+}
+.ml-40 {
+    margin-left: 60px; /* 40 * 1.5 */
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .movieContainer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .movieDetails {
+        align-items: center;
+    }
+    .movieDetails ul {
+        justify-content: center;
+    }
+}
