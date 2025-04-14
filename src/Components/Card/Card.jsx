@@ -5,7 +5,7 @@ function Card({movie}) {
 
     return (
                     <Link to={`movie/${movie.id}`} className={styles.card}>
-                        <img className={styles.poster} alt="moviePhoto" src={getMovieImg(movie.poster_path)}></img>
+                        <img className={styles.poster} alt="moviePhoto" src={getMovieImg(movie.poster_path)} loading="lazy"></img>
                         <h3 className={styles.title}>{movie.title}</h3>
                         
                         <p className={styles.releaseDate}>{movie.release_date.split('-')[0]}</p>

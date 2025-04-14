@@ -1,5 +1,5 @@
 :root{
-    --tag-color :  rgba(153, 153, 153, 0.5);
+    --tag-color :   hsl(0, 100%, 66%,0.5);
     --tag-border :  rgb(0, 0, 0);
     --tag-shadow : 0 0 2px 0 rgba(255, 255, 255, 0.5);
 }

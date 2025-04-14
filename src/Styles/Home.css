@@ -1,6 +1,93 @@
-.cardList{ 
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
+* {
+  box-sizing:border-box;
+}
+
+.cardList {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.filtersContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding: 1rem;
+}
+.filterSettings,
+.filterControls {
+  background-color: #1e1e1e;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem auto;
+  color: #f1f1f1;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.filterControls {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.filterSettings {
+  flex: 4 1 0;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.filterControls {
+  flex: 1 1 0;
+}
+.filterSettings label {
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+  display: block;
+  text-align: center;
+}
+
+.filterSettings input[type="text"] {
+    background-color: #2c2c2c;
+    border: 1px solid #444;
+    padding: 0.5rem;
+    border-radius: 6px;
+    color:  #ff5050;
+    width: 100%;
+    overflow: hidden;
+}
+
+.filterSettings input[type="range"] {
+    width: 100%;
+    accent-color: #ff5050;
+    cursor: pointer;
+}
+
+select {
+    background-color: #2c2c2c;
+    border: 1px solid #444;
+    padding: 0.5rem;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+select:focus,
+input:focus {
+    outline: none;
+    border-color: #ff5050;
+}
+
+label {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+}
+
+h2 {
+    text-align: center;
+    color: #eee;
 }
