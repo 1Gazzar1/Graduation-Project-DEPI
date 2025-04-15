@@ -62,7 +62,6 @@ export function MovieProvider({ children }) {
       cast: tagLists[0].tags,
       genres: tagLists[1].tags,
     }));
-    console.log("1")
   }, [tagLists[0].tags, tagLists[1].tags]);
 
   const getPrevPage = () => {

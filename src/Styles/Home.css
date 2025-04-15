@@ -56,7 +56,8 @@
     border: 1px solid #444;
     padding: 0.5rem;
     border-radius: 6px;
-    color:  #ff5050;
+    color:  #ff0000;
+    font-size: large;
     width: 100%;
     overflow: hidden;
 }
