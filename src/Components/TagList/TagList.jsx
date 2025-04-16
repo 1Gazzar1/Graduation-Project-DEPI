@@ -1,7 +1,9 @@
+import { useState } from "react";
 import styles from "./Tag.module.css";
  
-function TagList({tags,deleteTag,addTag,tagName,onChange}) {
+function TagList({tags,deleteTag,addTag,tagName,onChange,autoCompleteList}) {
 
+	const [shownList,setShownList] = useState([]);
 	function submit(e) {
 		e.preventDefault(); // so page wouldn't reload 
 		if (tagName.trim() === "" || tags.some(s => s === tagName)) return;
@@ -11,13 +13,27 @@ function TagList({tags,deleteTag,addTag,tagName,onChange}) {
 		// i don't know how this one works 
 		onChange({ target: { value: "" } }); // Reset the input by simulating an empty input change
 	}
+	function filterList(tagName) {
+		if (tagName.trim() === "") return
+		const regex = new RegExp(tagName,"i")
+		setShownList(autoCompleteList.filter(i => i.match(regex)).slice(0,10)) 
+	}
 	
-	return (
+	function handlePtagClick(e) {
+		const value = e.target.textContent
+		if (tags.some(t => t===value)) return
+		addTag(value) 
+		setShownList([])
+		onChange({ target: { value: "" } }); // Reset the input by simulating an empty input change
+	}
+	return (<>
 		<div className={styles.tagsContianer}>
 			<form onSubmit={(e) => submit(e)}>
 				<input
 					value={tagName}
-					onChange={(e) => onChange(e)}
+					onChange={(e) => {
+						filterList(e.target.value)
+						onChange(e)}}
 					type="text"
 				/>
 			</form>
@@ -26,7 +42,11 @@ function TagList({tags,deleteTag,addTag,tagName,onChange}) {
 					<Tag key={i} text={text} onDelete={() => deleteTag(i)} />
 				)}
 			</div>
+			<div className={styles.autoComplete}>
+				{shownList.map((i,index) => <p key={index} onClick={(e) => handlePtagClick(e)}>{i}</p>)}
+			</div>
 		</div>
+	</>
 	);
 }
 

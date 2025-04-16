@@ -87,10 +87,10 @@ export function MovieProvider({ children }) {
       )
     );
   }
-  function addTag(index) {
+  function addTag(index,value) {
     setTagLists((prev) =>
       prev.map((obj, i) =>
-        index === i ? { ...obj, tags: [...obj.tags, obj.tagName] } : obj
+        index === i ? { ...obj, tags: [...obj.tags, value ?? obj.tagName] } : obj
       )
     );
   }

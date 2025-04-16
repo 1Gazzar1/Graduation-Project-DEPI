@@ -26,6 +26,7 @@
   margin: 1rem auto;
   color: #f1f1f1;
   font-family: "Segoe UI", sans-serif;
+  flex-wrap: wrap;
 }
 
 .filterControls {
@@ -91,4 +92,21 @@ label {
 h2 {
     text-align: center;
     color: #eee;
+}
+
+
+@media (max-width : 700px){
+  .filtersContainer{
+    flex-direction: column;
+  }
+  .filterSettings{
+    justify-content: center;
+  }
+  
+  .filterControls{
+    justify-content: center;
+  }
+  .cardList{
+    margin: auto;
+  }
 }

@@ -6,7 +6,6 @@
     justify-content: center;
     gap: 60px; /* 40 * 1.5 */
     border-radius: 30px; /* 20 * 1.5 */
-    overflow-y:none;
 }
 
 /* Poster Image */
@@ -104,7 +103,13 @@
     height: 90%;
     fill: white;
 }
-
+.downloadBtn { 
+    width: 50px;
+    height: 50px;
+}
+.downloadBtn svg {
+    fill: green;
+}
 /* Responsive */
 @media (max-width: 768px) {
     .movieContainer {

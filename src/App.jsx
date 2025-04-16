@@ -4,6 +4,7 @@ import MovieDetails from "./Pages/MovieDetails";
 import Error from "./Pages/Error";
 import { MovieProvider } from "./Context/MovieContext/MovieContext";
 import { FavoriteProvider } from "./Context/FavoriteContext/FavoriteContext";
+import Favorites from "./Pages/Favorites";
 function App() {
 	return (
 		<>
@@ -16,6 +17,7 @@ function App() {
 								path="/movie/:id"
 								element={<MovieDetails />}
 							/>
+							<Route path="favorites" element={<Favorites />} />
 							<Route path="*" element={<Error />} />
 						</Routes>
 					</FavoriteProvider>

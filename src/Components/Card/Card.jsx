@@ -9,7 +9,7 @@ function Card({ movie }) {
 
 	return (
 		<div className={styles.card}>
-			<Link to={`movie/${movie.id}`} className={styles.poster}>
+			<Link to={`/movie/${movie.id}`} className={styles.poster}>
 				<img
 					className={styles.poster}
 					alt="moviePhoto"

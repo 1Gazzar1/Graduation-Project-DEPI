@@ -4,8 +4,10 @@
     --tag-shadow : 0 0 2px 0 rgba(255, 255, 255, 0.5);
 }
 .tagsContianer {
+    position: relative;
     text-align: center;
     width: fit-content;
+    font-family: 'Poppins','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .tags {
     display: flex;
@@ -39,4 +41,20 @@
 }
 .tag button svg { 
     aspect-ratio: 1/1;
+}
+.autoComplete{
+    display: flex;  
+    position: absolute;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    background-color: rgba(133, 56, 56);
+    z-index: 100000;
+}
+.autoComplete p {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.305);
+    text-align: left;
+    padding-left: 10px;
+    cursor: pointer;
 }
