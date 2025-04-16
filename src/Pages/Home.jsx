@@ -6,6 +6,8 @@ import TagList from "../Components/TagList/TagList.jsx";
 import { MovieContext } from "../Context/MovieContext/MovieContextHook.jsx";
 import SearchBar from "../Components/SearchBar/SearchBar.jsx";
 import { castMembers, genres } from "../assets/auroComplete.js";
+import DropdownMenu from "../Components/DropdownMenu/DropdownMenu.jsx";
+import {easeIn, easeInOut, easeOut, motion} from 'framer-motion'
 
 function Home() {
 	const {
@@ -40,7 +42,21 @@ function Home() {
 	}, []);
 
 	return (
-		<>
+			<motion.div 
+			initial = {{
+				x : -20 ,
+				opacity : 0 
+			}}
+			animate = {{
+				x : 0 , 
+				opacity : 1 
+			}}
+			exit={{
+				x : -20 ,
+				opacity : 0
+			}}
+			transition={{duration : 0.4 , type : 'spring'}}
+			>
 			<div className="filtersContainer">
 				<div className="filterSettings">
 					<div>
@@ -159,7 +175,7 @@ function Home() {
 				nextPage={getNextPage}
 				prevPage={getPrevPage}
 			/>
-		</>
+		</motion.div>
 	);
 }
 

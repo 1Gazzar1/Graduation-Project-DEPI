@@ -5,6 +5,7 @@ import { getMovieById,getMovieImg } from "../Services/movie_searcher";
 import { MovieContext } from "../Context/MovieContext/MovieContextHook.jsx";
 import { FavoriteContext } from "../Context/FavoriteContext/FavoriteContextHook.jsx";
 import styles from "../Components/Card/Card.module.css";
+import { motion } from "framer-motion";
 function MovieDetails() {
 	const params = useParams();
 	const [movie, setMovie] = useState();
@@ -30,7 +31,20 @@ function MovieDetails() {
 	}, [allMovies, params]);
 
 	return (
-		<>
+		<motion.div 
+		initial = {{
+			x : 20 ,
+			opacity : 0 
+		}}
+		animate = {{
+			x : 0 , 
+			opacity : 1 
+		}}
+		exit={{
+			x : 20 ,
+			opacity : 0
+		}}
+		transition={{duration : 0.4 , type : 'ease'}}>
 			{error.length > 0 && <h1>{error}</h1>}
 			{loading && "LOADING"}
 			{!loading && movie && (
@@ -100,7 +114,7 @@ function MovieDetails() {
 					</div>
 				</div>
 			)}
-		</>
+		</motion.div>
 	);
 }
 
@@ -111,7 +125,6 @@ function getMovieytsURL(movie) {
 	const movieName = movie.title.toLowerCase()
 	const movieYear = movie.release_date.split('-')[0] 
 	const fullMovie = movieName.split(" ").join("-")+ '-' + movieYear
-	console.log(fullMovie)
 	return `https://www.yts.mx/movies/${fullMovie}`
 }
 function searchIMDB(movie) {

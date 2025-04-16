@@ -1,0 +1,56 @@
+.container{
+    cursor: pointer;
+    position: fixed;
+    background-color: black;
+    top: 0;
+    right: 5%;
+    height: fit-content;
+    width: 10%;
+    display: flex;
+    z-index: 10000000000;
+}
+.container::after,
+.container::before{
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 10px;
+    height: 100%;
+    background-color: aliceblue;
+    border: 2px solid rgb(0, 0, 0);
+}
+.container::before{
+    left: 0;
+
+}
+
+.film {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.link { 
+    margin: 10% auto;
+    width: 70%;
+    border-radius: 10%;
+    background-color: white;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    font-size: 1.2vw;
+    font-weight: bold;
+    font-family: "Poppins";
+}
+
+@media (max-width : 768px) {
+    .container {
+        width: 20%;
+    }
+    .link{
+        font-size: 2.4vw;
+    }
+    
+}

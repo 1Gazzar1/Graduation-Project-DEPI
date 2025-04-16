@@ -4,6 +4,7 @@ import Card from "../Components/Card/Card";
 import "../Styles/Favorites.css";
 import { filterMovies } from "../Services/movie_searcher";
 import SearchBar from "../Components/SearchBar/SearchBar";
+import { motion } from "framer-motion";
 
 function Favorites() {
 	const { favorites } = useContext(FavoriteContext);
@@ -40,7 +41,20 @@ function Favorites() {
 	}, []);
 
 	return (
-		<>
+		<motion.div 
+		initial = {{
+			x : 20 ,
+			opacity : 0 
+		}}
+		animate = {{
+			x : 0 , 
+			opacity : 1 
+		}}
+		exit={{
+			x : 20 ,
+			opacity : 0
+		}}
+		transition={{duration : 0.4 , type : 'spring'}}>
 			<div className="searchBar">
 				<SearchBar labelText={'Title'}
 							ref={textRef}
@@ -52,7 +66,7 @@ function Favorites() {
 					<Card key={m.id} movie={m} />
 				))}
 			</div>
-		</>
+		</motion.div>
 	);
 }
 
