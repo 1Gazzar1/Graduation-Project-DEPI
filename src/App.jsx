@@ -7,6 +7,7 @@ import { FavoriteProvider } from "./Context/FavoriteContext/FavoriteContext";
 import Favorites from "./Pages/Favorites";
 import DropdownMenu from "./Components/DropdownMenu/DropdownMenu";
 import { AnimatePresence } from "framer-motion";
+import Credits from "./Pages/Credits";
 function App() {
 	return (
 		<>
@@ -25,6 +26,7 @@ function App() {
 									path="favorites"
 									element={<Favorites />}
 								/>
+								<Route path="/credits" element={<Credits />} />
 								<Route path="*" element={<Error />} />
 							</Routes>
 						</AnimatePresence>

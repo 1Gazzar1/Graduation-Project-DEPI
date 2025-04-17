@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useMemo } from "react";
 import {
   filterMovies,
   sortMovies,
@@ -8,8 +8,6 @@ import { MovieContext } from "./MovieContextHook";
 
 export function MovieProvider({ children }) {
   const [allMovies, setAllMovies] = useState([]);
-  const [shownMovies, setShownMovies] = useState([]);
-  const [allShownMovies,setAllShownMovies] = useState([]);
   const [sortOptions, setSortOptions] = useState({
     sortBy: "vote_count",
     asc: "0",
@@ -38,21 +36,20 @@ export function MovieProvider({ children }) {
     loadstuff();
   }, []);
 
-
-  useEffect(() => {
+  console.count('re-rendered')
+  const allShownMovies = useMemo(() => {
     let mvs = filterMovies(allMovies, filterSettings);
     mvs = sortMovies(mvs, sortOptions.sortBy, sortOptions.asc);
-    
-    setAllShownMovies(mvs)
+    return mvs;
 
-    
-  },[sortOptions, filterSettings,allMovies ])
-  useEffect(() => {
+    },[sortOptions, filterSettings,allMovies ])
+
+  const shownMovies = useMemo(() => {
     const start = (page - 1) * moviesPerPage;
     const end = start + moviesPerPage;
-    
-    setShownMovies(allShownMovies.slice(start,end));
-  }, [allShownMovies,page]);
+
+    return allShownMovies.slice(start,end);
+    }, [allShownMovies,page]);
 
   // when any of tags changes update the settings
   // this way feels dumb but i don't think it's that bad 

@@ -54,7 +54,7 @@ function Favorites() {
 			x : 20 ,
 			opacity : 0
 		}}
-		transition={{duration : 0.4 , type : 'spring'}}>
+		transition={{duration : 0.4 , type : 'ease'}}>
 			<div className="searchBar">
 				<SearchBar labelText={'Title'}
 							ref={textRef}

@@ -1,50 +1,71 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../Styles/MovieDetails.css";
-import { getMovieById,getMovieImg } from "../Services/movie_searcher";
+import { getMovieById, getMovieImg } from "../Services/movie_searcher";
 import { MovieContext } from "../Context/MovieContext/MovieContextHook.jsx";
 import { FavoriteContext } from "../Context/FavoriteContext/FavoriteContextHook.jsx";
 import styles from "../Components/Card/Card.module.css";
 import { motion } from "framer-motion";
 function MovieDetails() {
 	const params = useParams();
-	const [movie, setMovie] = useState();
+	const [movie, setMovie] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState("");
 	const { allMovies } = useContext(MovieContext);
 	const { isFavorite, addFavorite, removeFavorite } =
 		useContext(FavoriteContext);
+	const [secretKey, setSecretKey] = useState([]);
+	const [pirate,setPirate] = useState(false);
 
 	useEffect(() => {
 		const loadstuff = async () => {
 			setLoading(true);
-			const movie = await getMovieById(allMovies, params.id);
-			if (movie) {
-				setMovie(movie);
-			} else {
-				setError("there is no movie here 😞😞");
-			}
+			const mv = await getMovieById(allMovies, params.id);
+			if (!mv) return setError("There is no movie here 😞😞");
+			setError("")
+			setMovie(mv);
+
 			setLoading(false);
 		};
 
 		loadstuff();
 	}, [allMovies, params]);
 
+	useEffect(() => {
+		const handler = (e) => {
+			const key = e.key.toLowerCase();
+			setSecretKey((prevKeys) => {
+				const updated = [...prevKeys, key].slice(-6); // keep last 6 keys
+	
+				if (updated.join("") === "pirate") {
+					alert("you are a pirate");
+					setPirate(true)
+				}
+	
+				return updated;
+			});
+		};
+	
+		window.addEventListener("keydown", handler);
+		return () => window.removeEventListener("keydown", handler); 
+	}, []); 
+
 	return (
-		<motion.div 
-		initial = {{
-			x : 20 ,
-			opacity : 0 
-		}}
-		animate = {{
-			x : 0 , 
-			opacity : 1 
-		}}
-		exit={{
-			x : 20 ,
-			opacity : 0
-		}}
-		transition={{duration : 0.4 , type : 'ease'}}>
+		<motion.div
+			initial={{
+				x: 20,
+				opacity: 0,
+			}}
+			animate={{
+				x: 0,
+				opacity: 1,
+			}}
+			exit={{
+				x: 20,
+				opacity: 0,
+			}}
+			transition={{ duration: 0.4, type: "ease" }}
+		>
 			{error.length > 0 && <h1>{error}</h1>}
 			{loading && "LOADING"}
 			{!loading && movie && (
@@ -52,16 +73,54 @@ function MovieDetails() {
 					<div className="movieImg">
 						<div className="aboveImg">
 							<div>
-							<h1 className="ml-20">{movie.title}</h1>
-							<h3 className="ml-20">{movie.release_date}</h3>
+								<h1 className="ml-20">{movie.title}</h1>
+								<h3 className="ml-20">{movie.release_date}</h3>
 							</div>
-							{import.meta.env.MODE === "development" && (
-  <a className="downloadBtn" target="_blank" href={getMovieytsURL(movie)}>
-								<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-down-to-line" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="svg-inline--fa fa-arrow-down-to-line fa-fw fa-lg"><path fill="orange" d="M32 480c-17.7 0-32-14.3-32-32s14.3-32 32-32l320 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 480zM214.6 342.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 242.7 160 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 178.7 73.4-73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-128 128z" class=""></path></svg>
-  </a>
-)}
-							<a className="downloadBtn"  rel="noopener noreferrer" target="_blank" href={searchIMDB(movie)}>
-								<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-down-to-line" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="svg-inline--fa fa-arrow-down-to-line fa-fw fa-lg"><path d="M32 480c-17.7 0-32-14.3-32-32s14.3-32 32-32l320 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 480zM214.6 342.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 242.7 160 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 178.7 73.4-73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-128 128z" class=""></path></svg>
+							{/* {pirate && (
+								<a
+									className="downloadBtn"
+									target="_blank"
+									href={getMovieytsURL(movie)}
+								>
+									<svg
+										aria-hidden="true"
+										focusable="false"
+										data-prefix="fas"
+										data-icon="arrow-down-to-line"
+										role="img"
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 384 512"
+										class="svg-inline--fa fa-arrow-down-to-line fa-fw fa-lg"
+									>
+										<path
+											fill="orange"
+											d="M32 480c-17.7 0-32-14.3-32-32s14.3-32 32-32l320 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 480zM214.6 342.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 242.7 160 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 178.7 73.4-73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-128 128z"
+											class=""
+										></path>
+									</svg>
+								</a>
+							)} */}
+							<a
+								className="downloadBtn"
+								rel="noopener noreferrer"
+								target="_blank"
+								href={searchIMDB(movie)}
+							>
+								<svg
+									aria-hidden="true"
+									focusable="false"
+									data-prefix="fas"
+									data-icon="arrow-down-to-line"
+									role="img"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 384 512"
+									class="svg-inline--fa fa-arrow-down-to-line fa-fw fa-lg"
+								>
+									<path
+										d="M32 480c-17.7 0-32-14.3-32-32s14.3-32 32-32l320 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 480zM214.6 342.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 242.7 160 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 178.7 73.4-73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-128 128z"
+										class=""
+									></path>
+								</svg>
 							</a>
 							<button
 								onClick={() =>
@@ -84,7 +143,10 @@ function MovieDetails() {
 						<img src={getMovieImg(movie.poster_path)} />
 					</div>
 					<div className="movieDetails">
-						<h3 className="mb-20">Rating : <span className="red">{movie.vote_average}</span> </h3>
+						<h3 className="mb-20">
+							Rating :{" "}
+							<span className="red">{movie.vote_average}</span>{" "}
+						</h3>
 						<h3 className="mb-20">
 							Vote Count : {movie.vote_count}
 						</h3>
@@ -97,7 +159,7 @@ function MovieDetails() {
 						<div>
 							<h3 className="mb-20">Genres :</h3>
 							<ul className="mb-20 ml-40">
-								{movie.genres.map((g,i) => (
+								{movie.genres.map((g, i) => (
 									<li key={i}> {g}</li>
 								))}
 							</ul>
@@ -106,7 +168,7 @@ function MovieDetails() {
 						<div>
 							<h3 className="mb-20">Main Cast Members :</h3>
 							<ul className="mb-20 ml-40">
-								{movie.cast.map((c,i) => (
+								{movie.cast.map((c, i) => (
 									<li key={i}>{c}</li>
 								))}
 							</ul>
@@ -120,15 +182,16 @@ function MovieDetails() {
 
 export default MovieDetails;
 
-
-function getMovieytsURL(movie) {
-	const movieName = movie.title.toLowerCase()
-	const movieYear = movie.release_date.split('-')[0] 
-	const fullMovie = movieName.split(" ").join("-")+ '-' + movieYear
-	return `https://www.yts.mx/movies/${fullMovie}`
-}
+// function getMovieytsURL(movie) {
+// 	const movieName = movie.title.toLowerCase();
+// 	const movieYear = movie.release_date.split("-")[0];
+// 	const fullMovie = movieName.split(" ").join("-") + "-" + movieYear;
+// 	return `https://www.yts.mx/movies/${fullMovie}`;
+// }
 function searchIMDB(movie) {
-	const query = encodeURIComponent(`${movie.title} ${movie.release_date.split('-')[0]}`);
+	if (!movie.title) return;
+	const query = encodeURIComponent(
+		`${movie.title} ${movie.release_date.split("-")[0]}`
+	);
 	return `https://www.imdb.com/find?q=${query}&s=tt`;
-  }
-  
+}

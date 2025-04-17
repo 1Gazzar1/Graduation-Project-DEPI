@@ -6,8 +6,7 @@ import TagList from "../Components/TagList/TagList.jsx";
 import { MovieContext } from "../Context/MovieContext/MovieContextHook.jsx";
 import SearchBar from "../Components/SearchBar/SearchBar.jsx";
 import { castMembers, genres } from "../assets/auroComplete.js";
-import DropdownMenu from "../Components/DropdownMenu/DropdownMenu.jsx";
-import {easeIn, easeInOut, easeOut, motion} from 'framer-motion'
+import {motion} from 'framer-motion'
 
 function Home() {
 	const {
@@ -55,7 +54,7 @@ function Home() {
 				x : -20 ,
 				opacity : 0
 			}}
-			transition={{duration : 0.4 , type : 'spring'}}
+			transition={{duration : 0.4 , type : 'ease'}}
 			>
 			<div className="filtersContainer">
 				<div className="filterSettings">
@@ -72,7 +71,7 @@ function Home() {
 							labelText={"Title"}
 							ref={textRef}
 							onChange={changeFilterSettings}
-							value={filterSettings.title}
+							searchVal={filterSettings.title}
 						/>
 					</div>
 					<div>

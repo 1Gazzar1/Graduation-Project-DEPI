@@ -10,7 +10,6 @@ function TagList({tags,deleteTag,addTag,tagName,onChange,autoCompleteList}) {
 		
 		addTag(); 
 
-		// i don't know how this one works 
 		onChange({ target: { value: "" } }); // Reset the input by simulating an empty input change
 	}
 	function filterList(tagName) {
