@@ -5,7 +5,7 @@ import Pagination from "../Components/Pagination/Pagination.jsx";
 import TagList from "../Components/TagList/TagList.jsx";
 import { MovieContext } from "../Context/MovieContext/MovieContextHook.jsx";
 import SearchBar from "../Components/SearchBar/SearchBar.jsx";
-import { castMembers, genres } from "../assets/auroComplete.js";
+import { castMembers, genres } from "../assets/autoComplete.js";
 import {motion} from 'framer-motion'
 
 function Home() {
@@ -39,7 +39,6 @@ function Home() {
 			window.removeEventListener("keydown", handleFocus);
 		};
 	}, []);
-
 	return (
 			<motion.div 
 			initial = {{

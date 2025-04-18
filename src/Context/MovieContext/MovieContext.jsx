@@ -36,7 +36,6 @@ export function MovieProvider({ children }) {
     loadstuff();
   }, []);
 
-  console.count('re-rendered')
   const allShownMovies = useMemo(() => {
     let mvs = filterMovies(allMovies, filterSettings);
     mvs = sortMovies(mvs, sortOptions.sortBy, sortOptions.asc);

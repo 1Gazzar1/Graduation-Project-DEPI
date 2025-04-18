@@ -1,12 +1,85 @@
-# React + Vite
+# 🎬 MoovieMood
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A sleek movie browser built with React that helps you explore over 9,000 movies from the TMDB API.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation
 
-## Expanding the ESLint configuration
+1. Clone or fork the repo:
+   
+```bash    
+git clone https://github.com/1Gazzar1/MovieMood
+cd MoovieMood
+```
+  
+2. Install dependencies:
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+```
+
+3. Run the development server:
+```bash
+npm run dev
+```        
+
+
+---
+
+## Features
+
+- ⚡ **9,000+ Movies** from TMDB, all with a **rating ≥ 6** and **vote count ≥ 250**
+    
+-  **Advanced Filtering** by:
+    
+    - Title
+        
+    - Vote Count
+        
+    - Rating
+        
+    - Release Date
+        
+    - Cast Members
+        
+    - Genres
+        
+-  **Sort** by:
+    
+    - Vote Count
+        
+    - Rating
+        
+    - Release Date
+        
+- 🎥 **Detailed Movie Pages** — click any movie to view more info , and from there you can be redirected to IMDB for that movie 
+    
+- 💖 **Favorites System** — save your favorite movies locally and access them anytime
+	
+- 💾 No backend required — works 100% offline after cloning.
+
+## Examples / Preview 
+
+1. this is home page , here you can filter and sort movies 
+![Home Page]('./README-Screenshots/Home.png')
+2. this is the favorites page where you can access all your favorites 
+![Favorites Page]('./README-Screenshots/favorite.png')
+3. this is the Movie Details page , it's where you go when you click on a certain movie 
+![Movie Details Page]('./README-Screenshots/MovieDetails.png')
+
+
+
+## Tech Stack
+
+- React + [[Vite]]
+- Framer Motion (for animation)
+- React Router
+
+> 🔎 Explore over 9,000 movies with filters, favorites, and slick animations — built with React + TMDB.
+
+## 💬 Feedback & Contributions
+
+I’d love your feedback!  
+Found a bug? Got an idea? Wanna help?  
+Open an issue or send a PR — every bit helps.

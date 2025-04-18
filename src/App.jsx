@@ -11,28 +11,28 @@ import Credits from "./Pages/Credits";
 function App() {
 	return (
 		<>
+						<AnimatePresence mode="wait">
 			<BrowserRouter>
 				<MovieProvider>
 					<FavoriteProvider>
-						<AnimatePresence mode="wait">
 							<DropdownMenu />
 							<Routes>
-								<Route path="/" element={<Home />} />
-								<Route
+								<Route key={'home'} path="/" element={<Home />} />
+								<Route key={'movieDetails'}
 									path="/movie/:id"
 									element={<MovieDetails />}
 								/>
-								<Route
+								<Route key={'favorites'}
 									path="favorites"
 									element={<Favorites />}
 								/>
-								<Route path="/credits" element={<Credits />} />
+								<Route key={'credits'} path="/credits" element={<Credits />} />
 								<Route path="*" element={<Error />} />
 							</Routes>
-						</AnimatePresence>
 					</FavoriteProvider>
 				</MovieProvider>
 			</BrowserRouter>
+						</AnimatePresence>
 		</>
 	);
 }

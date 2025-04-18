@@ -9,8 +9,6 @@ createRoot(document.getElementById('root')).render(
   </StrictMode>,
 )
 
-const text = document.querySelector('.text')
-const spinner = document.querySelector('.spinner')
+const spinner = document.querySelector('.spinnerContainer')
 
-text.remove()
 spinner.remove()

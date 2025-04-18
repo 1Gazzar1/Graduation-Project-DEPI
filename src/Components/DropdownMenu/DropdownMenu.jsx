@@ -5,7 +5,7 @@ import { useState, useRef } from "react";
 function DropdownMenu() {
 	const [clicked, setClicked] = useState(false);
 	const filmRef = useRef();
-	const MotionLink = motion(Link);
+	const MotionLink = motion.create(Link);
 	return (
 		<>
 			
