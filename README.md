@@ -4,6 +4,9 @@ A sleek movie browser built with React that helps you explore over 9,000 movies 
 
 ---
 
+Check Out The [Live Demo](https://mooviemood.vercel.app/) !!
+
+
 ## Installation
 
 1. Clone or fork the repo:
@@ -75,6 +78,10 @@ npm run dev
 - React + [[Vite]]
 - Framer Motion (for animation)
 - React Router
+
+---
+
+Check Out my daily [dev log](./Devlog/MM-devlog.md) for this project 
 
 > 🔎 Explore over 9,000 movies with filters, favorites, and slick animations — built with React + TMDB.
 
