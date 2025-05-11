@@ -65,11 +65,11 @@ npm run dev
 ## Examples / Preview 
 
 1. this is home page , here you can filter and sort movies 
-![Home Page]('./README-Screenshots/Home.png')
+![Home Page](./README-Screenshots/Home.png)
 2. this is the favorites page where you can access all your favorites 
-![Favorites Page]('./README-Screenshots/favorite.png')
+![Favorites Page](./README-Screenshots/favorite.png)
 3. this is the Movie Details page , it's where you go when you click on a certain movie 
-![Movie Details Page]('./README-Screenshots/MovieDetails.png')
+![Movie Details Page](./README-Screenshots/MovieDetails.png)
 
 
 
