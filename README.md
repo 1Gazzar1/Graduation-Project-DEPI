@@ -90,3 +90,7 @@ Check Out my daily [dev log](./Devlog/MM-devlog.md) for this project
 I’d love your feedback!  
 Found a bug? Got an idea? Wanna help?  
 Open an issue or send a PR — every bit helps.
+
+## Todos ? 
+- add a page like favorites but for watched movies , so you can see what you watched recently . 
+
