@@ -5,7 +5,7 @@ import { getMovieById, getMovieImg } from "../Services/movie_searcher";
 import { MovieContext } from "../Context/MovieContext/MovieContextHook.jsx";
 import { FavoriteContext } from "../Context/FavoriteContext/FavoriteContextHook.jsx";
 import styles from "../Components/Card/Card.module.css";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 function MovieDetails() {
 	const params = useParams();
 	const [movie, setMovie] = useState(null);
@@ -14,8 +14,8 @@ function MovieDetails() {
 	const { allMovies } = useContext(MovieContext);
 	const { isFavorite, addFavorite, removeFavorite } =
 		useContext(FavoriteContext);
-	const [secretKey, setSecretKey] = useState([]);
-	const [pirate,setPirate] = useState(false);
+	const [_secretKey, setSecretKey] = useState([]);
+	const [_pirate,setPirate] = useState(false);
 
 	useEffect(() => {
 		const loadstuff = async () => {
@@ -51,7 +51,7 @@ function MovieDetails() {
 	}, []); 
 
 	return (
-		<motion.div
+		<Motion.div
 			initial={{
 				x: 20,
 				opacity: 0,
@@ -176,7 +176,7 @@ function MovieDetails() {
 					</div>
 				</div>
 			)}
-		</motion.div>
+		</Motion.div>
 	);
 }
 

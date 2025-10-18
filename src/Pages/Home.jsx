@@ -6,7 +6,7 @@ import TagList from "../Components/TagList/TagList.jsx";
 import { MovieContext } from "../Context/MovieContext/MovieContextHook.jsx";
 import SearchBar from "../Components/SearchBar/SearchBar.jsx";
 import { castMembers, genres } from "../assets/autoComplete.js";
-import {motion} from 'framer-motion'
+import {motion as Motion} from 'framer-motion'
 
 function Home() {
 	const {
@@ -40,7 +40,7 @@ function Home() {
 		};
 	}, []);
 	return (
-			<motion.div 
+			<Motion.div 
 			initial = {{
 				x : -20 ,
 				opacity : 0 
@@ -173,7 +173,7 @@ function Home() {
 				nextPage={getNextPage}
 				prevPage={getPrevPage}
 			/>
-		</motion.div>
+		</Motion.div>
 	);
 }
 
