@@ -1,0 +1,38 @@
+name: Movies CRON
+
+on:
+  schedule: # runs on the 1st of every month
+    - cron: "0 0 1 * *"
+
+permissions: 
+  contents: write
+
+jobs:
+  fetch-movies:
+    runs-on: ubuntu-latest
+    name: Renewing Data
+    env:
+      TMDB_API_KEY: ${{secrets.TMDB_API_KEY}}
+    steps:
+      - name: checking out code
+        uses: actions/checkout@v5
+
+      - name: setting up python
+        uses: actions/setup-python@v5
+
+      - name: Installing deps # requests is the only dep
+        run: pip install requests
+
+      - name: run python script # this should return a movies.json file at root
+        run: python3 ./scripts/fetch_movies.py
+
+      - name: Move generated file # replace the old file
+        run: mv ./movies.json ./src/assets/final_movies_v4.json
+
+      - name: Commit and Push changes 
+        run: | 
+          git config --global user.name "github-action's bot"
+          git config --global user.email "fake@mail.com"
+          git add ./src/assets/final_movies_v4.json 
+          git commit -m 'Automated Commit - refreshing movies'
+          git push 
