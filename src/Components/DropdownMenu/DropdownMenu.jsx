@@ -47,14 +47,14 @@ function DropdownMenu() {
 						Favorites
 					</MotionLink>
 					<MotionLink
-						to={"/credits"}
+						to={"/watched"}
 						whileHover={{
 							scale: 1.1,
 							rotate: "2.5deg",
 						}}
 						className={styles.link}
 					>
-						Credits
+						Watched
 					</MotionLink>
 				</nav>
 			</motion.div>

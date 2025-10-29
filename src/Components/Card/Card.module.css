@@ -1,10 +1,10 @@
-* { 
+* {
     margin: 0px;
     padding: 0px;
 }
 .card {
     text-decoration: none;
-    color: white; 
+    color: white;
     position: relative;
     width: 350px;
     display: flex;
@@ -15,9 +15,8 @@
     transform: scale(0.95);
     transition: all 0.2s ease;
     aspect-ratio: 4/7;
-
 }
-.heart{
+.heart {
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -32,35 +31,54 @@
     background-color: rgba(0, 0, 0, 0.365);
     transition: all 0.4s cubic-bezier(0.18, -1.15, 0.67, 1.3);
 }
-.active { 
+.watched {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    bottom: 15px;
+    right: 70px;
+    border-radius: 100%;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.365);
+    transition: all 0.4s cubic-bezier(0.18, -1.15, 0.67, 1.3);
+}
+.active {
     scale: 1.1;
 }
-.active svg { 
+.active svg {
     fill: red !important;
 }
-.heart svg{
-    width: 50%;
-    fill :white;
+.watched.active svg { 
+    fill: rgb(25, 190, 255) !important;
+}
+.heart svg,
+.watched svg {
+width: 50%;
+    fill: white;
     transition: all 0.4s cubic-bezier(0.18, -1.15, 0.67, 1.3);
- }
-.title{
+}
+.title {
     margin-left: 2%;
     font-size: 24px;
     padding: 10px;
 }
-.releaseDate { 
+.releaseDate {
     font-weight: bold;
     padding-bottom: 10px;
     margin-left: 7%;
 }
-.poster{
+.poster {
     flex: 1;
     height: 100%;
     width: 100%;
     border-radius: 15px 15px 0px 0px;
-    object-fit:cover;
+    object-fit: cover;
 }
-.card:hover{
+.card:hover {
     transform: scale(1);
     background-color: hsl(0, 0%, 20%);
 }

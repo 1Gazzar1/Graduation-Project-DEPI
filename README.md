@@ -92,5 +92,6 @@ Found a bug? Got an idea? Wanna help?
 Open an issue or send a PR — every bit helps.
 
 ## Todos ? 
-- add a page like favorites but for watched movies , so you can see what you watched recently . 
+- optimize the searchbar component so it has the `/` useEffect by itself. 
+- make the localstorage only store movie ids and not whole movies (why ? it could store outdated movie data)
 
