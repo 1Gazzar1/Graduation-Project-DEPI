@@ -13,7 +13,6 @@ function WatchedMovies() {
     const [shownWatchedMovies, setShownWatchedMovies] = useState([]);
     const [search, setSearch] = useState("");
     const [showLiked, setShowLiked] = useState(true);
-    const textRef = useRef();
 
     useEffect(() => {
         setShownWatchedMovies(
@@ -27,20 +26,6 @@ function WatchedMovies() {
             }),
         );
     }, [search, watchedMovies]);
-    useEffect(() => {
-        const handleFocus = (e) => {
-            if (e.key === "/") {
-                e.preventDefault();
-                textRef.current.focus();
-            }
-        };
-
-        window.addEventListener("keydown", handleFocus);
-
-        return () => {
-            window.removeEventListener("keydown", handleFocus);
-        };
-    }, []);
     const displayedMovies = showLiked
         ? shownWatchedMovies
         : shownWatchedMovies.filter((m) => !isFavorite(m.id));
@@ -64,7 +49,6 @@ function WatchedMovies() {
             <div className="searchBar">
                 <SearchBar
                     labelText={"Title"}
-                    ref={textRef}
                     searchVal={search}
                     onChange={(e) => setSearch(e.target.value)}
                 />

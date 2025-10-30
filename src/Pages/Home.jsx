@@ -25,21 +25,6 @@ function Home() {
         getPrevPage,
     } = useContext(MovieContext);
 
-    const textRef = useRef();
-    useEffect(() => {
-        const handleFocus = (e) => {
-            if (e.key === "/") {
-                e.preventDefault();
-                textRef.current.focus();
-            }
-        };
-
-        window.addEventListener("keydown", handleFocus);
-
-        return () => {
-            window.removeEventListener("keydown", handleFocus);
-        };
-    }, []);
     return (
         <Motion.div
             initial={{
@@ -59,17 +44,8 @@ function Home() {
             <div className="filtersContainer">
                 <div className="filterSettings">
                     <div>
-                        {/* <label htmlFor="title">Title</label>
-            <input
-              ref={textRef}
-              onChange={changeFilterSettings}
-              value={filterSettings.title}
-              id="title"
-              type="text"
-            /> */}
                         <SearchBar
                             labelText={"Title"}
-                            ref={textRef}
                             onChange={changeFilterSettings}
                             searchVal={filterSettings.title}
                         />

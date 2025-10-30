@@ -10,7 +10,6 @@ function Favorites() {
     const { favorites } = useContext(FavoriteContext);
     const [shownFavorites, setShownFavorites] = useState([]);
     const [search, setSearch] = useState("");
-    const textRef = useRef();
 
     useEffect(() => {
         setShownFavorites(
@@ -25,20 +24,7 @@ function Favorites() {
         );
     }, [search, favorites]);
 
-    useEffect(() => {
-        const handleFocus = (e) => {
-            if (e.key === "/") {
-                e.preventDefault();
-                textRef.current.focus();
-            }
-        };
 
-        window.addEventListener("keydown", handleFocus);
-
-        return () => {
-            window.removeEventListener("keydown", handleFocus);
-        };
-    }, []);
 
     return (
         <Motion.div
@@ -59,7 +45,6 @@ function Favorites() {
             <div className="searchBar">
                 <SearchBar
                     labelText={"Title"}
-                    ref={textRef}
                     searchVal={search}
                     onChange={(e) => setSearch(e.target.value)}
                 />
