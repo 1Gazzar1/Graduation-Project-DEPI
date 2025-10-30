@@ -69,3 +69,36 @@ export function sortMovies(movies, sortBy, asc) {
 export function getMovieImg(file_path) {
     return `https://image.tmdb.org/t/p/w500${file_path}`;
 }
+
+export function gatherCastMember(movies) {
+    const castMembersSet = new Set();
+    for (const movie of movies) {
+        for (const member of movie.cast) {
+            castMembersSet.add(member);
+        }
+    }
+    return [...castMembersSet];
+}
+export function gatherMovieGenres() {
+    return [
+        "History",
+        "Western",
+        "Action",
+        "Horror",
+        "Thriller",
+        "Family",
+        "Science Fiction",
+        "Animation",
+        "Crime",
+        "Drama",
+        "Comedy",
+        "Mystery",
+        "Music",
+        "Documentary",
+        "Fantasy",
+        "Romance",
+        "War",
+        "Adventure",
+        "TV Movie",
+    ];
+}
