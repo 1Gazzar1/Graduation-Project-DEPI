@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { FavoriteContext } from "../Context/FavoriteContext/FavoriteContextHook";
 import Card from "../Components/Card/Card";
 import "../Styles/Favorites.css";
@@ -23,8 +23,6 @@ function Favorites() {
             }),
         );
     }, [search, favorites]);
-
-
 
     return (
         <Motion.div

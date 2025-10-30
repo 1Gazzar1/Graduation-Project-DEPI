@@ -52,12 +52,12 @@
 .active svg {
     fill: red !important;
 }
-.watched.active svg { 
+.watched.active svg {
     fill: rgb(25, 190, 255) !important;
 }
 .heart svg,
 .watched svg {
-width: 50%;
+    width: 50%;
     fill: white;
     transition: all 0.4s cubic-bezier(0.18, -1.15, 0.67, 1.3);
 }

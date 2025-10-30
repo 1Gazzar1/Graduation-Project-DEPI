@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext } from "react";
 import Card from "../Components/Card/Card.jsx";
 import "../Styles/Home.css";
 import Pagination from "../Components/Pagination/Pagination.jsx";

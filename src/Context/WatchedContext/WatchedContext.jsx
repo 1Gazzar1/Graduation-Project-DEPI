@@ -14,7 +14,6 @@ export function WatchedProvider({ children }) {
     };
     const addWatchedMovie = (newMovie) => {
         setWatchedMovies((w) => [...w, newMovie]);
-        console.log("added ", newMovie.title);
     };
     const removeWatchedMovie = (id) => {
         setWatchedMovies((w) => w.filter((m) => m.id !== id));

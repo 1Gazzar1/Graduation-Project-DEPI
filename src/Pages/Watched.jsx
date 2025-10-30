@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import Card from "../Components/Card/Card";
 import "../Styles/Favorites.css";
 import { filterMovies } from "../Services/movie_searcher";

@@ -1,70 +1,81 @@
 /* Container Layout */
 .movieContainer {
-    margin-top: 45px; /* 30 * 1.5 */
+    margin-top: 45px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 60px; /* 40 * 1.5 */
-    border-radius: 30px; /* 20 * 1.5 */
+    gap: 60px;
+    border-radius: 30px;
 }
 
 /* Poster Image */
-.movieImg img { 
-    border-radius: 30px; /* 20 * 1.5 */
-    width: 450px; /* 300 * 1.5 */
+.movieImg img {
+    border-radius: 30px;
     max-width: 100%;
     height: auto;
     box-shadow: 0 6px 22px rgba(0, 0, 0, 0.4);
 }
 
-.aboveImg h1{
-    max-width: 300px;
+.title h1 {
+    max-width: 450px;
 }
-.aboveImg {
+
+.belowImg {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
+
 /* Text Block */
 .movieDetails {
-    max-width: 900px; /* 600 * 1.5 */
+    max-width: 900px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 45px; /* 30 * 1.5 */
+    gap: 45px;
 }
 
 /* Typography */
-.movieDetails h1 {
-    font-size: 75px; /* 50 * 1.5 */
-    margin-bottom: 15px;
-}
-.movieDetails h2 {
-    font-size: 52.5px; /* 35 * 1.5 */
-    margin-bottom: 15px;
-}
+.movieDetails h1,
+.movieDetails h2,
 .movieDetails h3 {
-    font-size: 36px; /* 24 * 1.5 */
     margin-bottom: 15px;
+    margin-left: 40px; /* base left margin for all titles */
 }
+
+.movieDetails h1 {
+    font-size: 75px;
+}
+
+.movieDetails h2 {
+    font-size: 52.5px;
+}
+
+.movieDetails h3 {
+    font-size: 36px;
+}
+
 .movieDetails p,
 .movieDetails li {
-    font-size: 24px; /* 16 * 1.5 */
-    line-height: 1.5; /* 1.6 * 1.5 */
+    font-size: 24px;
+    line-height: 1.5;
+    margin-left: 70px; /* extra margin for readability */
 }
 
 /* Lists */
 .movieDetails ul {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px; /* 20 * 1.5 */
+    gap: 30px;
     padding-left: 0;
 }
+
 .movieDetails li {
     list-style: none;
     position: relative;
-    padding-left: 36px; /* 24 * 1.5 */
+    padding-left: 36px;
 }
+
 .movieDetails li::before {
     content: "📌";
     position: absolute;
@@ -73,18 +84,24 @@
 
 /* Utility classes */
 .mb-20 {
-    margin-bottom: 30px; /* 20 * 1.5 */
+    margin-bottom: 30px;
 }
+
 .ml-20 {
-    margin-left: 30px; /* 20 * 1.5 */
+    margin-left: 30px;
 }
+
 .ml-40 {
-    margin-left: 60px; /* 40 * 1.5 */
+    margin-left: 60px;
 }
-.red { 
-    color : #ff5050;
+
+.red {
+    color: #ff5050;
 }
-.heart{
+
+/* Buttons / Icons */
+.heart,
+.watched {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -95,48 +112,189 @@
     border: none;
     background-color: transparent;
     transition: all 0.4s cubic-bezier(0.18, -1.15, 0.67, 1.3);
-    margin-right: 40px;
     margin-top: 5px;
 }
-.heart svg { 
+
+.heart svg,
+.watched svg {
     width: 90%;
     height: 90%;
     fill: white;
+    transition: all 0.3s ease-in-out;
 }
-.downloadBtn { 
+.heart.active svg {
+    scale: 1.1;
+    fill: red;
+}
+.watched.active svg {
+    scale: 1.1;
+    fill: rgb(25, 190, 255);
+}
+
+.downloadBtn {
     width: 50px;
     height: 50px;
 }
+
 .downloadBtn svg {
     fill: green;
 }
+
 .star {
     position: relative;
     margin-left: 50px;
     width: 55px;
 }
+
 .star svg {
-    position : absolute ;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
 }
-.rating { 
+
+.rating {
     display: flex;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* ============================= */
+/*      RESPONSIVE STYLES       */
+/* ============================= */
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .movieDetails h1 {
+        font-size: 55px;
+    }
+
+    .movieDetails h2 {
+        font-size: 40px;
+    }
+
+    .movieDetails h3 {
+        font-size: 28px;
+    }
+
+    .movieDetails p,
+    .movieDetails li {
+        font-size: 18px;
+    }
+
+    .movieDetails {
+        gap: 30px;
+    }
+
     .movieContainer {
-        flex-direction: column;
+        gap: 40px;
+    }
+
+    /* Center text on tablet and remove left margins */
+    .movieDetails {
         align-items: center;
         text-align: center;
     }
-    .movieDetails {
-        align-items: center;
+
+    .movieDetails h1,
+    .movieDetails h2,
+    .movieDetails h3,
+    .movieDetails p,
+    .movieDetails li {
+        margin-left: 0;
     }
+}
+
+/* Phones */
+@media (max-width: 768px) {
+    .title h1 {
+        font-size: 24px;
+    }
+    .movieContainer {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .movieImg img {
+        max-width: 90%;
+    }
+
+    .movieDetails {
+        max-width: 90%;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .movieDetails h1 {
+        font-size: 32px;
+    }
+
+    .movieDetails h2 {
+        font-size: 24px;
+    }
+
+    .movieDetails h3 {
+        font-size: 18px;
+    }
+
+    .movieDetails p,
+    .movieDetails li {
+        font-size: 16px;
+        line-height: 1.4;
+    }
+
     .movieDetails ul {
         justify-content: center;
+        gap: 15px;
+    }
+
+    .belowImg {
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .heart,
+    .downloadBtn,
+    .watched {
+        width: 40px;
+        height: 40px;
+        margin-right: 0;
+    }
+
+    .star {
+        margin-left: 0;
+        width: 40px;
+    }
+
+    /* same — remove margins on phone */
+    .movieDetails h1,
+    .movieDetails h2,
+    .movieDetails h3,
+    .movieDetails p,
+    .movieDetails li {
+        margin-left: 0;
+    }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+    .movieDetails h1 {
+        font-size: 26px;
+    }
+
+    .movieDetails h2 {
+        font-size: 20px;
+    }
+
+    .movieDetails h3 {
+        font-size: 16px;
+    }
+
+    .movieDetails p,
+    .movieDetails li {
+        font-size: 14px;
     }
 }

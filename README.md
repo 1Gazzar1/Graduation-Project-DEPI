@@ -77,5 +77,3 @@ Open an issue or send a PR — every bit helps.
 ## Todos ?
 
 - make the localstorage only store movie ids and not whole movies (why ? it could store outdated movie data)
-
-- replace some icons on the movie details page (add watched icon too)
