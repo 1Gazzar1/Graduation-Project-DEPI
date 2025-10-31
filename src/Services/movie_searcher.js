@@ -10,9 +10,13 @@ import allmovies from "../assets/final_movies_v4.json";
 export const loadMovies = async () => {
     return allmovies;
 };
-export const getMovieById = async (movies, ID) => {
+export const getMovieById = (movies, ID) => {
     const movie = movies.find((m) => m.id === Number(ID));
     return movie;
+};
+export const getMoviesByIds = (movies, ids) => {
+    const idSet = new Set(ids);
+    return movies.filter((m) => idSet.has(m.id));
 };
 
 export const filterMovies = (movies, settings) => {

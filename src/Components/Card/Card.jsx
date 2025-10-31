@@ -29,7 +29,7 @@ function Card({ movie }) {
                 onClick={() =>
                     isFavorite(movie.id)
                         ? removeFavorite(movie.id)
-                        : addFavorite(movie)
+                        : addFavorite(movie.id)
                 }
                 className={`${styles.heart} ${
                     isFavorite(movie.id) ? styles.active : ""
@@ -43,7 +43,7 @@ function Card({ movie }) {
                 onClick={() =>
                     isWatched(movie.id)
                         ? removeWatchedMovie(movie.id)
-                        : addWatchedMovie(movie)
+                        : addWatchedMovie(movie.id)
                 }
                 className={`${styles.watched} 
                 ${isWatched(movie.id) ? styles.active : ""}`}

@@ -1,29 +1,45 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FavoriteContext } from "./FavoriteContextHook";
+import { MovieContext } from "../MovieContext/MovieContextHook";
+import { getMoviesByIds } from "../../Services/movie_searcher";
 
 export function FavoriteProvider({ children }) {
-	const [favorites, setFavorites] = useState(
-		JSON.parse(localStorage.getItem("favorites")) || []
-	);
+    // this contains the movie ids
+    const [favoriteMovieIds, setFavoriteMovieIds] = useState(
+        JSON.parse(localStorage.getItem("favorites")) || [],
+    );
+    const [favoriteMovies, setFavoriteMovies] = useState([]);
 
-	useEffect(() => {
-		localStorage.setItem("favorites", JSON.stringify(favorites));
-	}, [favorites]);
-	function isFavorite(id) {
-		return favorites.some((m) => m.id === id);
-	}
-	function addFavorite(movie) {
-		setFavorites((f) => [...f, movie]);
-	}
-	function removeFavorite(id) {
-		setFavorites((f) => f.filter((m) => m.id !== id));
-	}
+    // so i can fetch it through ids
+    const { allMovies } = useContext(MovieContext);
 
-	return (
-		<FavoriteContext.Provider
-			value={{ favorites, isFavorite, addFavorite, removeFavorite }}
-		>
-			{children}
-		</FavoriteContext.Provider>
-	);
+    // load local storage
+    useEffect(() => {
+        localStorage.setItem("favorites", JSON.stringify(favoriteMovieIds));
+    }, [favoriteMovieIds]);
+
+    // fetch the movies through their Ids
+    useEffect(() => {
+        const movies = getMoviesByIds(allMovies, favoriteMovieIds);
+        setFavoriteMovies(movies);
+    }, [favoriteMovieIds,allMovies]);
+
+    function isFavorite(id) {
+        return favoriteMovieIds.includes(id);
+
+    }
+    function addFavorite(id) {
+        setFavoriteMovieIds((f) => [...f, id]);
+    }
+    function removeFavorite(newId) {
+        setFavoriteMovieIds((f) => f.filter((id) => id !== newId));
+    }
+
+    return (
+        <FavoriteContext.Provider
+            value={{ favoriteMovies, isFavorite, addFavorite, removeFavorite }}
+        >
+            {children}
+        </FavoriteContext.Provider>
+    );
 }

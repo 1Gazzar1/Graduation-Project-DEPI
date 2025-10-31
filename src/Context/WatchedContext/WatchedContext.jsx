@@ -1,22 +1,33 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { WatchedContext } from "./WatchedContextHook";
+import { MovieContext } from "../MovieContext/MovieContextHook";
+import { getMoviesByIds } from "../../Services/movie_searcher";
 
 export function WatchedProvider({ children }) {
-    const [watchedMovies, setWatchedMovies] = useState(
+    const [watchedMovieIds, setWatchedMovieIds] = useState(
         JSON.parse(localStorage.getItem("watched")) || [],
     );
+    const [watchedMovies, setWatchedMovies] = useState([]);
+    // so i can fetch it through ids
+    const { allMovies } = useContext(MovieContext);
+
     useEffect(() => {
-        localStorage.setItem("watched", JSON.stringify(watchedMovies));
-    }, [watchedMovies]);
+        localStorage.setItem("watched", JSON.stringify(watchedMovieIds));
+    }, [watchedMovieIds]);
+
+    useEffect(() => {
+        const movies = getMoviesByIds(allMovies, watchedMovieIds);
+        setWatchedMovies(movies);
+    }, [watchedMovieIds, allMovies]);
 
     const isWatched = (id) => {
-        return watchedMovies.some((m) => m.id === id);
+        return watchedMovieIds.includes(id);
     };
-    const addWatchedMovie = (newMovie) => {
-        setWatchedMovies((w) => [...w, newMovie]);
+    const addWatchedMovie = (id) => {
+        setWatchedMovieIds((w) => [...w, id]);
     };
-    const removeWatchedMovie = (id) => {
-        setWatchedMovies((w) => w.filter((m) => m.id !== id));
+    const removeWatchedMovie = (newId) => {
+        setWatchedMovieIds((w) => w.filter((id) => id !== newId));
     };
 
     const contextValue = {

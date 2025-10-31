@@ -7,13 +7,13 @@ import SearchBar from "../Components/SearchBar/SearchBar";
 import { motion as Motion } from "framer-motion";
 
 function Favorites() {
-    const { favorites } = useContext(FavoriteContext);
+    const { favoriteMovies } = useContext(FavoriteContext);
     const [shownFavorites, setShownFavorites] = useState([]);
     const [search, setSearch] = useState("");
 
     useEffect(() => {
         setShownFavorites(
-            filterMovies(favorites, {
+            filterMovies(favoriteMovies, {
                 title: search,
                 voteCount: 10,
                 rating: 6,
@@ -22,7 +22,7 @@ function Favorites() {
                 genres: [],
             }),
         );
-    }, [search, favorites]);
+    }, [search, favoriteMovies]);
 
     return (
         <Motion.div
