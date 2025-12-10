@@ -6,10 +6,10 @@ function NoMovies() {
                 border: "1px solid #2a2a2a",
                 borderRadius: "16px",
                 width: "100%",
-                maxWidth : "1200px",
+                maxWidth: "1200px",
                 margin: "auto",
                 textAlign: "center",
-                marginTop : "50px",
+                marginTop: "50px",
                 display: "flex",
 
                 flexDirection: "column",

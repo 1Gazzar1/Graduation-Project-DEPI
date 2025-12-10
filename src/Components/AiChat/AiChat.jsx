@@ -85,8 +85,8 @@ export function AiChat() {
                             placeholder="Type your message..."
                             onKeyDown={(e) => {
                                 if (e.key === "Enter" && !e.shiftKey) {
-                                    e.preventDefault(); // prevent new line
-                                    formOnSubmit(e); // your submit handler
+                                    e.preventDefault();
+                                    formOnSubmit(e);
                                 }
                             }}
                         />

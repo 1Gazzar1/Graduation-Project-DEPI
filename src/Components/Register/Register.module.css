@@ -1,0 +1,137 @@
+/* Container الخلفية العامة */
+.loginContainer {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        linear-gradient(135deg, #14141481, #14141481),
+        url("./../../assets/hq720.jpg");
+    font-family: "Arial", sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/* الصندوق الرئيسي لكل من Login و Register */
+.loginBox {
+    background: #1b1b1b88;
+    padding: 40px 30px;
+    width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    backdrop-filter: blur(4px);
+}
+
+/* عنوان الصفحة */
+.title {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+/* الفورم نفسه */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* كل مجموعة Input + Label */
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+/* Label الحقول */
+.inputGroup label {
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+/* الحقول (Email, Password) */
+.inputField {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background: #2c2c2c;
+    color: #fff;
+}
+
+.inputField::placeholder {
+    color: #999;
+}
+
+/* رسائل الخطأ */
+.error {
+    color: #ff4d4f;
+    font-size: 0.8rem;
+    margin-top: 4px;
+}
+
+/* زر Login / Register */
+.loginBtn,
+.colorBtn {
+    padding: 14px;
+    background: #e50914;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.colorBtn {
+    color: white;
+}
+.loginBtn:hover {
+    opacity: 0.9;
+}
+
+/* النص تحت الفورم للتحويل بين Login / Register */
+.switch {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: #bbb;
+}
+
+.switch a {
+    color: #e50914;
+    font-weight: bold;
+    text-decoration: none;
+}
+/* Toast message فوق الفورم */
+.toast {
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.success {
+    background-color: #28a745;
+    color: white;
+}
+
+.errorToast {
+    background-color: #ff4d4f;
+    color: white;
+}
+
+/* Animation fadeIn */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

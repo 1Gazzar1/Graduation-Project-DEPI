@@ -60,7 +60,6 @@ function Home() {
                             min="250"
                             max="10000"
                         />{" "}
-                        {/*vote count*/}
                         <label htmlFor="voteCount">
                             {filterSettings.voteCount}
                         </label>
@@ -76,7 +75,6 @@ function Home() {
                             max="9"
                             step="0.1"
                         />{" "}
-                        {/*rating*/}
                         <label htmlFor="rating">{filterSettings.rating}</label>
                     </div>
                     <div>
@@ -89,7 +87,6 @@ function Home() {
                             min="1950"
                             max="2025"
                         />{" "}
-                        {/*release date */}
                         <label htmlFor="releaseDate">
                             {filterSettings.releaseDate}
                         </label>

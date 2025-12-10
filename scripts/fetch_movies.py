@@ -4,7 +4,6 @@ import time
 import os 
 
 movieArray = []
-movieSet = set()
 apiKey = os.getenv('TMDB_API_KEY')
 
 if not apiKey : 
@@ -24,8 +23,7 @@ def fetchMovies(movieArray,apiKey,releaseDate_gte = '1950-01-01',releaseDate_lte
         data = json.loads(response.content)
         for oldMovieFormat in data['results'] : 
             movie = formatMovie(oldMovieFormat)
-            if not movie['id'] in movieSet :  movieArray.append(movie)
-            movieSet.add(movie['id'])
+            movieArray.append(movie)
 
 def fetchNumofPages(apiKey,releaseDate_gte = '1950-01-01',releaseDate_lte = '1970-01-01',
                 vote_average_gte = 6,sort_by= 'vote_average.desc',

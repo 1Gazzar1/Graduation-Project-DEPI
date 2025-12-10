@@ -118,7 +118,7 @@ export function MovieProvider({ children }) {
 
         setSortOptions((prev) => ({ ...prev, [element]: value }));
     }
-    console.log(allMovies.map(m => m.id))
+
     return (
         <MovieContext.Provider
             value={{

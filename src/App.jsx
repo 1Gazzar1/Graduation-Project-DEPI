@@ -8,6 +8,10 @@ import { LibraryProvider } from "./Context/LibraryContext/LibraryContext";
 import MovieLibrary from "./Pages/MovieLibrary";
 import NavBarLayout from "./Layouts/NavBarLayout";
 import Profile from "./Pages/Profile";
+import Login from "./Components/Login/Login";
+import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
+import Register from "./Components/Register/Register";
+import { LinksProvider } from "./Context/LinksContext/LinksContext";
 
 function App() {
     const routes = [
@@ -16,19 +20,60 @@ function App() {
             element: <NavBarLayout />,
             errorElement: <Error />,
             children: [
-                { index: true, element: <Home /> },
-                { path: "movie/:id", element: <MovieDetails /> },
-                { path: "library", element: <MovieLibrary /> },
+                // ---------------------------
+                //          Protected Routes
+                // ---------------------------
+                {
+                    index: true,
+                    element: (
+                        <ProtectedRoute>
+                            <Home />
+                        </ProtectedRoute>
+                    ),
+                },
+                {
+                    path: "movie/:id",
+                    element: (
+                        <ProtectedRoute>
+                            <MovieDetails />
+                        </ProtectedRoute>
+                    ),
+                },
+                {
+                    path: "library",
+                    element: (
+                        <ProtectedRoute>
+                            <MovieLibrary />
+                        </ProtectedRoute>
+                    ),
+                },
                 {
                     path: "profile",
-                    element: <Profile />,
+                    element: (
+                        <ProtectedRoute>
+                            <Profile />
+                        </ProtectedRoute>
+                    ),
+                },
+                {
+                    path: "register",
+                    element: <Register />,
+                },
+                // ---------------------------
+                //          Public Login
+                // ---------------------------
+                {
+                    path: "login",
+                    element: <Login />,
                 },
             ],
         },
     ];
+
     const router = createBrowserRouter(routes);
+
     return (
-        <>
+        <LinksProvider>
             <AnimatePresence mode="wait">
                 <MovieProvider>
                     <LibraryProvider>
@@ -36,7 +81,7 @@ function App() {
                     </LibraryProvider>
                 </MovieProvider>
             </AnimatePresence>
-        </>
+        </LinksProvider>
     );
 }
 
